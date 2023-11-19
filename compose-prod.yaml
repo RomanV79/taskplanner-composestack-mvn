@@ -6,8 +6,6 @@ services:
       - 'POSTGRES_DB=taskplanner'
       - 'POSTGRES_PASSWORD=password'
       - 'POSTGRES_USER=admin'
-    ports:
-      - '15432:5432'
   rabbitmq:
     image: 'bitnami/rabbitmq:3.12.0'
     container_name: 'planner-rabbitmq'
@@ -15,9 +13,6 @@ services:
     environment:
       - 'RABBITMQ_PASSWORD=password'
       - 'RABBITMQ_USERNAME=admin'
-    ports:
-      - '5672:5672'
-      - '15672:15672'
     volumes:
       - ./conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - ./conf/definitions.json:/etc/rabbitmq/definitions.json:ro

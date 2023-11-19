@@ -21,8 +21,3 @@ services:
     volumes:
       - ./conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - ./conf/definitions.json:/etc/rabbitmq/definitions.json:ro
-  redis:
-    container_name: 'planner-redis'
-    image: 'redis:latest'
-    ports:
-      - '16379:6379'
