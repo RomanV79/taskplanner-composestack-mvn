@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: admin
   rabbitmq:
-    image: 'bitnami/rabbitmq:3.12.0'
+    image: 'rabbitmq:3-management-alpine'
     container_name: 'planner-rabbitmq'
     restart: 'always'
     environment:
@@ -18,7 +18,7 @@ services:
       - ./conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - ./conf/definitions.json:/etc/rabbitmq/definitions.json:ro
   rest:
-    image: romanv79/taskplanner-userservice:v1.0.0
+    image: romanv79/taskplanner-userservice:v1.0.3
     container_name: 'rest'
     restart: 'always'
     environment:
@@ -31,7 +31,7 @@ services:
       - postgres
       - rabbitmq
   ui:
-    image: romanv79/taskplanner-ui:v1.0.0
+    image: romanv79/taskplanner-ui:v1.0.3
     container_name: 'ui'
     restart: 'always'
     environment:
@@ -41,7 +41,7 @@ services:
     depends_on:
       - rest
   scheduler:
-    image: romanv79/taskplanner-scheduler:v1.0.0
+    image: romanv79/taskplanner-scheduler:v1.0.2
     container_name: 'scheduler'
     restart: 'always'
     environment:
@@ -59,6 +59,6 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: prod
       RMQ_PASSWORD: ${RMQ_PASSWORD}
-      MAIL-USERNAME: ${MAIL-USERNAME}
-      MAIL-PASSWORD: ${MAIL-PASSWORD}
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
 
