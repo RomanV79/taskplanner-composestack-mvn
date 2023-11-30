@@ -18,7 +18,7 @@ services:
       - ./conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - ./conf/definitions.json:/etc/rabbitmq/definitions.json:ro
   rest:
-    image: romanv79/taskplanner-userservice:v1.0.3
+    image: romanv79/taskplanner-userservice:v1.0.5
     container_name: 'rest'
     restart: 'always'
     environment:
@@ -27,11 +27,13 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       RMQ_PASSWORD: ${RMQ_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
+    ports:
+      - 8090:8085
     depends_on:
       - postgres
       - rabbitmq
   ui:
-    image: romanv79/taskplanner-ui:v1.0.3
+    image: romanv79/taskplanner-ui:v1.0.5
     container_name: 'ui'
     restart: 'always'
     environment:
@@ -61,4 +63,3 @@ services:
       RMQ_PASSWORD: ${RMQ_PASSWORD}
       MAIL_USERNAME: ${MAIL_USERNAME}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
-
