@@ -18,7 +18,7 @@ services:
       - ./conf/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - ./conf/definitions.json:/etc/rabbitmq/definitions.json:ro
   rest:
-    image: romanv79/taskplanner-userservice:v1.0.5
+    image: romanv79/taskplanner-userservice:v1.0.6
     container_name: 'rest'
     restart: 'always'
     environment:
@@ -55,7 +55,7 @@ services:
       - rabbitmq
       - rest
   mail:
-    image: romanv79/taskplanner-mailservice:v1.0.0
+    image: romanv79/taskplanner-mailservice:v1.0.1
     container_name: 'mail'
     restart: 'always'
     environment:
