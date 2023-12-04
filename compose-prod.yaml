@@ -33,7 +33,7 @@ services:
       - postgres
       - rabbitmq
   ui:
-    image: romanv79/taskplanner-ui:v1.0.5
+    image: romanv79/taskplanner-ui:v1.0.7
     container_name: 'ui'
     restart: 'always'
     environment:
@@ -55,7 +55,7 @@ services:
       - rabbitmq
       - rest
   mail:
-    image: romanv79/taskplanner-mailservice:v1.0.1
+    image: romanv79/taskplanner-mailservice:v1.0.8
     container_name: 'mail'
     restart: 'always'
     environment:
@@ -63,3 +63,5 @@ services:
       RMQ_PASSWORD: ${RMQ_PASSWORD}
       MAIL_USERNAME: ${MAIL_USERNAME}
       MAIL_PASSWORD: ${MAIL_PASSWORD}
+    depends_on:
+      - rabbitmq
